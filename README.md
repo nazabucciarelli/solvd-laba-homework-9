@@ -1,24 +1,25 @@
-# 6th Homework of Java Test Automation Course - Solvd Laba
-This repository stores the 6th homework given by our mentor in the Java Test 
-Automation Course at Solvd Laba. It consists in a modification of the last 
-homework (5th), but using the Collections framework from Java and with a
-custom Double Linked List created by me.
+# 8th Homework of Java Test Automation Course - Solvd Laba
+This repository stores the 8th homework given by our mentor in the Java Test 
+Automation Course at Solvd Laba. It consists in a basic algorithm about 
+detecting the number of unique words from a file and write the result in 
+another file using StringUtils and FileUtils in order to use fewer lines of
+code.
 
 ## Explanation
 
-To accomplish the requirements of the homework, I've replaced the use of regular
-arrays by ArrayLists. It was necessary to refactor some classes in order to
-make the code compile. I've used ArrayLists because they are faster regarding
-storing and accessing data, comparing with the LinkedLists that are used to
-manipulate data. Finally, I've made a custom class that represents the basic
-behavior of a Generic Doubly Linked List. It is in the util package, with its class 
-CustomNode that represents a Node from the LinkedList which has a pointer to the
-next and previous node, and contains the element itself.
+To accomplish the requirements of the homework, I've added the commons-io and
+commons-lang3 dependencies into the pom.xml in order to have access to the
+StringUtils and FileUtils classes. After that, at the end of the Main class,
+I've created a method with the responsibility of getting the unique words from
+the obtained array of strings from the file_to_read.txt file read in the 
+try-catch block and then the result was written in the file_to_write.txt file.
+I've learnt to be aware of deprecated methods given by libraries and use the
+recent ones.
 
 ## Technologies
 
 - Java
-- Log4j2
+- Maven
 
 ## Set-Up
 
