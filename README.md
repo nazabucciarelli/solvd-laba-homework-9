@@ -10,11 +10,11 @@ code.
 To accomplish the requirements of the homework, I've added the commons-io and
 commons-lang3 dependencies into the pom.xml in order to have access to the
 StringUtils and FileUtils classes. After that, at the end of the Main class,
-I've created a method with the responsibility of getting the unique words from
-the obtained array of strings from the file_to_read.txt file read in the 
-try-catch block and then the result was written in the file_to_write.txt file.
-I've learnt to be aware of deprecated methods given by libraries and use the
-recent ones.
+I've created a method with the responsibility of getting the amount of 
+unique words from the obtained array of strings from the file_to_read.txt 
+file read in the try-catch block and then the result was written in the 
+file_to_write.txt file. I've learnt to be aware of deprecated methods given
+by libraries and use the recent ones.
 
 ## Technologies
 
