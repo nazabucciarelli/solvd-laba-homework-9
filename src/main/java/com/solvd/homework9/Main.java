@@ -1,18 +1,24 @@
 package com.solvd.homework9;
 
 import com.solvd.homework9.exceptions.NegativeValueException;
+import com.solvd.homework9.functional_interfaces.IAdder;
+import com.solvd.homework9.functional_interfaces.IConcatenate;
+import com.solvd.homework9.functional_interfaces.ICreateInstance;
 import com.solvd.homework9.interfaces.ISleep;
 import com.solvd.homework9.models.*;
+import com.solvd.homework9.util.CustomLinkedList;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.solvd.homework9.util.CustomLinkedList;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class Main {
     public static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -63,7 +69,7 @@ public class Main {
                 = new ArrayList<>(Arrays.asList(axolotl, frog));
 
 
-        // Instantiating a animal rooms for the zoo
+        // Instantiating an animal room for the zoo
         AnimalRoom birdsRoom = new AnimalRoom("Birds Room", birdsRoomAnimals, 45);
         AnimalRoom amphibiansRoom = new AnimalRoom("Amphibians Room",
                 amphibianRoomAnimals, 20);
@@ -86,17 +92,15 @@ public class Main {
                 = new ArrayList<>(Arrays.asList(vet, manager, securityGuard,
                 louis, pablo));
 
-        for (Person p : persons) {
-            p.walk();
-        }
+        // Using the Consumer Functional Interface to iterate using the
+        // forEach method.
+        persons.forEach(p -> p.walk());
 
         List<ISleep> sleepers
                 = new ArrayList<>(Arrays.asList(pablo, louis, parrot, pigeon,
                 securityGuard));
 
-        for (ISleep sleeper : sleepers) {
-            sleeper.sleep();
-        }
+        sleepers.forEach(s -> s.sleep());
 
         LOGGER.info("There are " + Animal.getQuantityOfAnimals()
                 + " Animals");
@@ -148,6 +152,50 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        // Using the Predicate Functional Interface to get the employees over
+        // 25 years old
+
+        List<Employee> employeesOver25 =
+                administrationEmployees.stream().filter(e -> e.getAge() > 25)
+                        .collect(Collectors.toList());
+        LOGGER.info("The employees over 25 years old are: ");
+        employeesOver25.forEach(e -> LOGGER.info(e.getFirstName() + " " +
+                e.getLastName()));
+
+        // Using the Function Functional Interface to get person's ages.
+        List<Integer> ages = persons.stream().map(p -> p.getAge())
+                .collect(Collectors.toList());
+        LOGGER.info("The person's ages are: ");
+        ages.forEach(a -> LOGGER.info(a));
+
+        // Using Supplier Function Interface to get a Zoo's instance
+        Supplier<Zoo> zooSupplier = () -> new Zoo("International Zoo", null, null);
+        LOGGER.info("The created zoo is called " + zooSupplier.get().getName());
+
+        // Using UnaryOperator to square the person's ages
+        UnaryOperator<Integer> unaryOperator = age -> age * age;
+        LOGGER.info("The ages of the persons squared are: ");
+        ages.forEach(a -> LOGGER.info(unaryOperator.apply(a)));
+
+        // Using my custom functional interfaces
+
+        // IConcatenate Lambda
+        IConcatenate<String> iConcatenate = (firstElement, secondElement,
+                                             thirdElement) ->
+                firstElement + " " + secondElement + " " + thirdElement;
+
+        LOGGER.info(iConcatenate.concatenate("This", "is", "concatenation"));
+
+        // IAdder Lambda
+        IAdder<Double> iAdder = ((firstNumber, secondNumber, thirdNumber) ->
+                firstNumber + secondNumber + thirdNumber);
+        LOGGER.info("The result of the sum is " + iAdder.sum(10.2, 30.86, 15.3));
+
+        // ICreateInstance Lambda
+        ICreateInstance<Habitat> iCreateInstance = () -> new Habitat("Savanna");
+        LOGGER.info("The created habitat is called " +
+                iCreateInstance.getInstance().getName());
     }
 
     private static int getUniqueWords(String[] wordsArray) {
