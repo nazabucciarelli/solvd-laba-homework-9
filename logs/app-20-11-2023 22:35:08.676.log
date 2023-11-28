@@ -9,11 +9,11 @@
 2023-11-20 22:35:08,836 INFO m.Bird [main] I like sleeping in branches from trees!
 2023-11-20 22:35:08,837 INFO m.Bird [main] I like sleeping in branches from trees!
 2023-11-20 22:35:08,837 INFO m.Person [main] I sleep in a bed, during the night!
-2023-11-20 22:35:08,838 INFO Main [main] There are 4 Animals
-2023-11-20 22:35:08,840 INFO Main [main] Insert two integer numbers
-2023-11-20 22:35:11,316 INFO Main [main] The result of the sum is 83
-2023-11-20 22:35:11,318 ERROR Main [main] Age cannot be negative
-exceptions.NegativeValueException: Age cannot be negative
-	at models.Person.setAge(Person.java:49) ~[classes/:?]
-	at Main.main(Main.java:114) [classes/:?]
-2023-11-20 22:35:11,341 INFO Main [main] Current age of Louis is 40
+2023-11-20 22:35:08,838 INFO com.solvd.homework9.Main [main] There are 4 Animals
+2023-11-20 22:35:08,840 INFO com.solvd.homework9.Main [main] Insert two integer numbers
+2023-11-20 22:35:11,316 INFO com.solvd.homework9.Main [main] The result of the sum is 83
+2023-11-20 22:35:11,318 ERROR com.solvd.homework9.Main [main] Age cannot be negative
+com.solvd.homework9.exceptions.NegativeValueException: Age cannot be negative
+	at com.solvd.homework9.models.Person.setAge(Person.java:49) ~[classes/:?]
+	at com.solvd.homework9.Main.main(com.solvd.homework9.Main.java:114) [classes/:?]
+2023-11-20 22:35:11,341 INFO com.solvd.homework9.Main [main] Current age of Louis is 40
