@@ -155,7 +155,6 @@ public class Main {
 
         // Using the Predicate Functional Interface to get the employees over
         // 25 years old
-
         List<Employee> employeesOver25 =
                 administrationEmployees.stream().filter(e -> e.getAge() > 25)
                         .collect(Collectors.toList());
@@ -169,11 +168,11 @@ public class Main {
         LOGGER.info("The person's ages are: ");
         ages.forEach(a -> LOGGER.info(a));
 
-        // Using Supplier Function Interface to get a Zoo's instance
+        // Using Supplier Functional Interface to get a Zoo's instance
         Supplier<Zoo> zooSupplier = () -> new Zoo("International Zoo", null, null);
         LOGGER.info("The created zoo is called " + zooSupplier.get().getName());
 
-        // Using UnaryOperator to square the person's ages
+        // Using UnaryOperator Functional Interface to square the person's ages
         UnaryOperator<Integer> unaryOperator = age -> age * age;
         LOGGER.info("The ages of the persons squared are: ");
         ages.forEach(a -> LOGGER.info(unaryOperator.apply(a)));
